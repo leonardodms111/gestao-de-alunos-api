@@ -1,0 +1,42 @@
+name: CI - Gestão de Alunos API
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  api:
+    name: Rodar API no GitHub Actions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Iniciar API e validar resposta
+        run: |
+          PORT=3000 npm start > /tmp/gestao-de-alunos-api.log 2>&1 &
+
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:3000/ > /tmp/gestao-de-alunos-api-health.json; then
+              echo "API iniciada com sucesso"
+              cat /tmp/gestao-de-alunos-api-health.json
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "API não respondeu em 60 segundos"
+          tail -n 50 /tmp/gestao-de-alunos-api.log
+          exit 1

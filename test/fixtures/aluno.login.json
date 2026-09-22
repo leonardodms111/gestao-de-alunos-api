@@ -1,0 +1,32 @@
+[
+    {
+        "TestTitle": "Retornar status 200 quando usuário e senha estiverem corretos",
+        "TestDescription": "Este teste verifica se o usuário consegue realizar login utilizando credenciais válidas.",
+        "dadosLogin": {
+            "email": "ENV_USER",
+            "senha": "ENV_PASS"
+        },
+        "expectedStatus": 200
+    },
+    {
+        "TestTitle": "Retornar status 400 quando a senha não for informada",
+        "TestDescription": "Este teste verifica se a API retorna erro quando a senha não é informada.",
+        "dadosLogin": {
+            "email": "ENV_USER",
+            "senha": ""
+        },
+        "expectedStatus": 400,
+        "expectedResponse": {
+            "error": "Os campos \"email\" e \"senha\" são obrigatórios."
+        }
+    },
+    {
+        "TestTitle": "Retornar status 401 quando a senha for incorreta",
+        "TestDescription": "Este teste verifica se a API rejeita uma tentativa de login utilizando uma senha incorreta.",
+        "dadosLogin": {
+            "email": "ENV_USER",
+            "senha": "654321"
+        },
+        "expectedStatus": 401
+    }
+]

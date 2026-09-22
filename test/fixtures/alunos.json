@@ -1,0 +1,32 @@
+[
+    {
+        "TestTitle": "Deve cadastrar um aluno com sucesso",
+        "TestDescription": "Este teste verifica se o administrador consegue cadastrar um novo aluno.",
+        "dadosAluno": {
+            "nome": "Leonardo Silva1",
+            "email": "leonardo.silva1@example.com",
+            "matricula": "1234567",
+            "senha": "senha123"
+        },
+        "expectedStatus": 201,
+        "expectedResponse": {
+            "nome": "Leonardo Silva1",
+            "email": "leonardo.silva1@example.com",
+            "matricula": "1234567"
+        }
+    },
+    {
+        "TestTitle": "Deve negar um cadastro quando o aluno já existe",
+        "TestDescription": "Este teste verifica se a API impede o cadastro de um aluno que já possui matrícula ou e-mail cadastrado.",
+        "dadosAluno": {
+            "nome": "Ana Souza",
+            "email": "ENV_USER",
+            "matricula": "20240001",
+            "senha": "senha123"
+        },
+        "expectedStatus": 409,
+        "expectedResponse": {
+            "error": "Já existe um aluno cadastrado com essa matrícula ou e-mail."
+        }
+    }
+]

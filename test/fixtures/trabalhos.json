@@ -1,0 +1,24 @@
+[
+
+    {
+        "TestTitle": "Deve registrar a entrega de um trabalho como aluno",
+        "TestDescription": "Este teste verifica se um aluno pode registrar a entrega de um trabalho com sucesso. Ele envia uma solicitação POST para o endpoint de trabalhos do aluno, incluindo os detalhes do trabalho a ser registrado. O teste espera que a resposta tenha um status 201 (Created) e que o corpo da resposta contenha as informações do trabalho registrado.",
+        "dadosAluno": {
+            "id": "aluno-ana-souza",
+            "nome": "Ana Souza",
+            "email": "ana.souza@example.com"
+        },
+        "dadosTrabalho": {
+            "titulo": "Trabalho de Matemática",
+            "descricao": "Entrega do trabalho de matemática sobre álgebra.",
+            "dataEntrega": "2024-06-15",
+            "disciplinaId": "disciplina-matematica"
+        },
+        "expectedStatus": 201,
+        "titulo": "Trabalho de Matemática",
+        "descricao": "Entrega do trabalho de matemática sobre álgebra.",
+        "dataEntrega": "2024-06-15",
+        "disciplinaId": "disciplina-matematica"
+    }   
+
+]
