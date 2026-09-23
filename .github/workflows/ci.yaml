@@ -40,3 +40,13 @@ jobs:
           echo "API não respondeu em 60 segundos"
           tail -n 50 /tmp/gestao-de-alunos-api.log
           exit 1
+
+      - name: Rodar testes
+        env:
+          BASE_URL: http://localhost:3000
+          ADMIN_USER: ${{ secrets.ADMIN_USER }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          USER: ${{ secrets.USER }}
+          PASS: ${{ secrets.PASS }}
+          ID_ALUNO: aluno-ana-souza
+        run: npm test
