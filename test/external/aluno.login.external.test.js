@@ -1,7 +1,7 @@
 import request from "supertest";
 import { expect } from "chai";
 import "dotenv/config";
-import login from "../fixtures/login.json" with { type: "json" };
+import login from "../fixtures/aluno.login.json" with { type: "json" };
 
 describe("Login", () => {
 
